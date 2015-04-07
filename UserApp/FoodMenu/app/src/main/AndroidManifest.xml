@@ -24,6 +24,10 @@
             android:name=".ShopsActivity"
             android:label="@string/title_activity_shops" >
         </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu" >
+        </activity>
     </application>
 
 </manifest>

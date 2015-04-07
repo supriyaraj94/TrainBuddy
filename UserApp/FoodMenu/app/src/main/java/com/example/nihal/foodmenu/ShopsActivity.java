@@ -1,11 +1,15 @@
 package com.example.nihal.foodmenu;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class ShopsActivity extends ActionBarActivity {
@@ -24,6 +28,16 @@ public class ShopsActivity extends ActionBarActivity {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shopArray);
         shopView = (ListView) findViewById(R.id.shopList);
         shopView.setAdapter(arrayAdapter);
+        shopView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(ShopsActivity.this,
+                        "Shop: " + shopArray[position] + " clicked",
+                        Toast.LENGTH_SHORT).show();
+                Intent callMenu = new Intent(getApplicationContext(), MenuActivity.class);
+                callMenu.putExtra("Shop", shopArray[position]);
+                startActivity(callMenu);
+            }
+        });
     }
 
     @Override
