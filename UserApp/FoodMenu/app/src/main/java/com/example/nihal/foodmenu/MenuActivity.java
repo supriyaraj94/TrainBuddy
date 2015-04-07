@@ -4,12 +4,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class MenuActivity extends ActionBarActivity {
 
     ListView menuList;
+    TextView totalText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +23,12 @@ public class MenuActivity extends ActionBarActivity {
     }
 
 
+
     private void createMenu(String[] foodList){
         menuList = (ListView) findViewById(R.id.menuListView);
         Model[] modelItems = new Model[foodList.length];
         for(int i = 0; i< foodList.length;i++)
-            modelItems[i] = new Model(foodList[i], 0);
+            modelItems[i] = new Model(foodList[i], 0, 10);
 
         CustomAdapter adapter = new CustomAdapter(this, modelItems);
         menuList.setAdapter(adapter);
@@ -51,4 +55,6 @@ public class MenuActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

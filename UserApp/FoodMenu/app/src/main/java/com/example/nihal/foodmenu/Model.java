@@ -5,11 +5,14 @@ package com.example.nihal.foodmenu;
  */
 public class Model{
     String name;
-    int value; /* 0 -&gt; checkbox disable, 1 -&gt; checkbox enable */
+    int value;
+    int cost;/* 0 -&gt; checkbox disable, 1 -&gt; checkbox enable */
 
-    Model(String name, int value){
+    Model(String name, int value, int cost){
         this.name = name;
         this.value = value;
+        this.cost = cost;
+
     }
     public String getName(){
         return this.name;
@@ -17,5 +20,6 @@ public class Model{
     public int getValue(){
         return this.value;
     }
+    public int getCost() {return this.cost;}
 
 }

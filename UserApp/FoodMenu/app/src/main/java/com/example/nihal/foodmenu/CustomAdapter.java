@@ -28,8 +28,15 @@ public class CustomAdapter extends ArrayAdapter {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         convertView = inflater.inflate(R.layout.row, parent, false);
         TextView name = (TextView) convertView.findViewById(R.id.textView1);
+        TextView cost = (TextView) convertView.findViewById(R.id.textView2);
         CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkBox1);
+        StringBuilder costString = new StringBuilder(' ');
+        for(int i=0;i<(25-modelItems[position].getName().length());i++)
+            costString.append(' ');
+        costString.append("Cost:");
         name.setText(modelItems[position].getName());
+
+        cost.setText(costString.append(modelItems[position].getCost()));
         if (modelItems[position].getValue() == 1)
             cb.setChecked(true);
         else

@@ -9,6 +9,28 @@
     <ListView
         android:id="@+id/menuListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="400dp">
+
     </ListView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOTAL"
+        android:id="@+id/totalTextView"
+        android:layout_below="@+id/menuListView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLACE ORDER"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/menuListView"
+        android:layout_alignEnd="@+id/menuListView" />
+
+
 </RelativeLayout>
