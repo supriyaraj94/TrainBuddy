@@ -1,5 +1,6 @@
 package com.example.nihal.maptest;
 
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,6 +14,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.List;
 import java.util.Locale;
@@ -71,8 +74,10 @@ public class MapsActivity extends FragmentActivity {
      */
     private void setUpMap() {
         //mMap.addMarker(new MarkerOptions().position(new LatLng(12, 77)).title("Marker"));
+        String [] cityList= {"Bangalore, Karnataka, India", "Chennai, Tamil Nadu, India"};
         putMarker("Bangalore, Karnataka, India");
         putMarker("Chennai, Tamil Nadu, India");
+        putPolyLines(cityList);
     }
 
     public Address getLatitudeAndLongitudeFromGoogleMapForAddress(String searchedAddress, Address location){
@@ -105,6 +110,14 @@ public class MapsActivity extends FragmentActivity {
         }catch(Exception ex) {
             Toast.makeText(getApplicationContext(), (String) "Could not get Latitude and Longitude", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void putPolyLines(String[] cityList){
+        Address location1 = new Address(new Locale("English"));
+        Address location2 = new Address(new Locale("English"));
+        location1 = getLatitudeAndLongitudeFromGoogleMapForAddress(cityList[0], location1);
+        location2 = getLatitudeAndLongitudeFromGoogleMapForAddress(cityList[1], location2);
+        Polyline line = mMap.addPolyline(new PolylineOptions().add(new LatLng(location1.getLatitude(), location1.getLongitude()), new LatLng(location2.getLatitude(), location2.getLongitude())).width(5).color(Color.RED));
     }
 
 }
