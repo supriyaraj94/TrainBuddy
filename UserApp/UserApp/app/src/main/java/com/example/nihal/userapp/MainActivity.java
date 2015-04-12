@@ -50,11 +50,21 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+        Fragment fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
+        switch(position) {
+        default:
+        case 0:
+            fragment = new NavigationDrawerFragment();
+            break;
+        case 1:
+            fragment = new TrainMapFragment();
+            break;
+        }
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
-        
+
     }
 
     public void onSectionAttached(int number) {
@@ -63,13 +73,13 @@ public class MainActivity extends ActionBarActivity
                 mTitle = getString(R.string.dashboard);
                 break;
             case 2:
-                mTitle = getString(R.string.title_section1);
+                mTitle = getString(R.string.title_section1); //MAP
                 break;
             case 3:
-                mTitle = getString(R.string.title_section2);
+                mTitle = getString(R.string.title_section2); //FOOD
                 break;
             case 4:
-                mTitle = getString(R.string.title_section3);
+                mTitle = getString(R.string.title_section3); //TAXI
                 break;
         }
     }
